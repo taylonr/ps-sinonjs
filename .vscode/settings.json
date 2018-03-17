@@ -1,0 +1,9 @@
+{
+    "eslint.options": {
+        "configFile": "./.eslintrc.json"
+    },
+    "cSpell.words": [
+        "hstore",
+        "ilike"
+    ]
+}
