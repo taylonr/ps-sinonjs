@@ -54,7 +54,7 @@ module.exports = {
     return model.all()
       .then(responses.ok(res))
       .catch((err) => {
-        responses.serverError(res, err);
+        responses.serverError(res)(err);
       });
   }
-}
+};
