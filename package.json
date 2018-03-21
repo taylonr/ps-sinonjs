@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:dev": "nodemon ./bin/www",
-    "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "db:create": "./node_modules/.bin/sequelize db:create && npm run db:migrate && npm run db:seed",
     "db:create:test": "cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:create && cross-env NODE_ENV=test npm run db:migrate && cross-env NODE_ENV=test npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",

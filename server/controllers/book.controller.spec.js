@@ -4,7 +4,7 @@ const controller = require('./book.controller');
 
 describe.only('Books controller', () => {
   describe('When getting a list of books', () => {
-    it('Should return ok', () => {
+    it('Should return 4 books', () => {
       const req = httpMocks.createRequest();
       const res = httpMocks.createResponse();
 
@@ -30,6 +30,24 @@ describe.only('Books controller', () => {
 
       return controller.create(req, res).then(() => {
         return expect(res._getData().dataValues.title).to.eql(book.title);
+      });
+    });
+  });
+
+  describe('When getting a specific book', () => {
+    describe('and the book does not exist', () => {
+      it('Should return a 404', () => {
+        const req = httpMocks.createRequest({
+          params: {
+            id: 7
+          }
+        });
+
+        const res = httpMocks.createResponse();
+
+        return controller.getById(req, res).then(() => {
+          return expect(res.statusCode).to.eql(404);
+        });
       });
     });
   });
