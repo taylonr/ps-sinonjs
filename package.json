@@ -29,7 +29,8 @@
     "pg-promise": "^6.5.0",
     "ramda": "^0.25.0",
     "sequelize": "^4.8.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "sinon": "^4.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.1",
