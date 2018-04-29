@@ -4,8 +4,8 @@ const sinon = require('sinon');
 const controller = require('./book.controller');
 const model = require('../models').book;
 
-describe.only('Books controller', () => {
-  describe.skip('When getting a list of books', () => {
+describe('Books controller', () => {
+  describe('When getting a list of books', () => {
     it('Should return 4 books', () => {
       const req = httpMocks.createRequest();
       const res = httpMocks.createResponse();
@@ -38,7 +38,7 @@ describe.only('Books controller', () => {
     });
   });
 
-  describe.skip('When getting a specific book', () => {
+  describe('When getting a specific book', () => {
     describe('and the book does not exist', () => {
       it('Should return a 404', () => {
         const req = httpMocks.createRequest({
