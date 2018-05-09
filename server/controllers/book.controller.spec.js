@@ -10,6 +10,7 @@ describe('Books controller', () => {
       const req = httpMocks.createRequest();
       const res = httpMocks.createResponse();
 
+      sinon.stub(model, 'all').resolves([{}, {}, {}, {}]);
       return controller.list(req, res).then(() => {
         return expect(res._getData().length).to.eql(4);
       });
@@ -49,8 +50,32 @@ describe('Books controller', () => {
 
         const res = httpMocks.createResponse();
 
+        const find = sinon.stub(model, 'findById');
+        find.withArgs(7).resolves(null);
+
+
         return controller.getById(req, res).then(() => {
           return expect(res.statusCode).to.eql(404);
+        });
+      });
+    });
+
+    describe('and the book does exist', () => {
+      it('should return 200', () => {
+        const req = httpMocks.createRequest({
+          params: {
+            id: 7
+          }
+        });
+
+        const res = httpMocks.createResponse();
+
+        const find = sinon.stub(model, 'findById');
+        find.resolves({});
+
+
+        return controller.getById(req, res).then(() => {
+          return expect(res.statusCode).to.eql(200);
         });
       });
     });
