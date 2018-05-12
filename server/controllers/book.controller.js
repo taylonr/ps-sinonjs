@@ -2,6 +2,7 @@ const responses = require('../responses');
 const CrudController = require('./crud.controller');
 
 const Book = require('../models').book;
+const Transaction = require('../models').transaction;
 
 module.exports = new CrudController(Book, {
 
@@ -44,5 +45,11 @@ module.exports = new CrudController(Book, {
       .findAll(query)
       .then(responses.ok(res))
       .catch(responses.serverError(res));
+  },
+
+  purchase: (req, res) => {
+    return Transaction
+      .create({amount: req.body.amount, id: req.params.id})
+      .then(responses.ok(res));
   }
 });

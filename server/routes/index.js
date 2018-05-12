@@ -22,6 +22,7 @@ module.exports = (app, express) => {
   });
 
   app.get('/books/search', booksController.search);
+  app.post('/books/:bookId/purchase', booksController.purchase);
   setUpRoutes(app, 'books', booksController);
 
 
