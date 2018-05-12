@@ -49,7 +49,11 @@ module.exports = new CrudController(Book, {
 
   purchase: (req, res) => {
     return Transaction
-      .create({amount: req.body.amount, id: req.params.id})
+      .create({
+        amount: req.body.amount,
+        id: req.params.id,
+        user_id: req.body.user_id
+      })
       .then(responses.ok(res));
   }
 });
