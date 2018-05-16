@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    wishlistId: DataTypes.INTEGER
+    wishlistId: DataTypes.INTEGER,
+    customerSince: DataTypes.DATE
   });
 
   user.associate = (models) => {
