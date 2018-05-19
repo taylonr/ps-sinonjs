@@ -40,6 +40,9 @@ describe('Books controller', () => {
   });
 
   describe('When getting a specific book', () => {
+    afterEach(() => {
+      model.findById.restore && model.findById.restore();
+    });
     describe('and the book does not exist', () => {
       it('Should return a 404', () => {
         const req = httpMocks.createRequest({
