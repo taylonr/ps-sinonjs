@@ -10,6 +10,7 @@ module.exports = new CrudController(User, {
       name: `${req.body.firstName}'s List`
     }).then((wishlist) => {
       req.body.wishlistId = wishlist.dataValues.id;
+      req.body.customerSince = new Date();
       return crud.create(User)(req, res);
     });
   },
