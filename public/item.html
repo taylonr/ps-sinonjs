@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Currency Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Globomantics Price Lookup</h1>
+    <div>
+        <label>Price in USD:
+            <input type="number" disabled value="10" />
+        </label>
+    </div>
+
+    <div>
+        <label>Show price in
+            <select>
+                <option value='AUD'>AUD</option>
+                <option value='EUR'>EUR</option>
+                <option value='USD' selected>USD</option>
+            </select>
+        </label>
+    </div>
+
+    <div id='convertedPrice'></div>
+
+    <button>Get Price</button>
+
+    <script type="module">
+        import getPrices from '/javascript/currency.js';
+
+        $('button').on('click', () => {
+            const price = parseInt($('input').val(), 10);
+            const currency = $('select').val();
+
+            getPrices(price, currency, (price) => {
+                $('#convertedPrice').html(price);
+            });
+        });
+    </script>
+
+</body>
+</html>

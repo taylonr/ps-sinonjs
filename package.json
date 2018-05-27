@@ -10,9 +10,12 @@
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
     "test": "mocha -w -R progress ./server/**/*.spec.js",
+    "test:client": "mocha -w -R progress --require babel-register ./public/**/*.spec.js",
     "watch": "npm run test:watch & npm run lint:watch"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-register": "^6.26.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "cross-env": "^5.1.1",
@@ -22,6 +25,7 @@
     "express": "~4.15.2",
     "express-basic-auth": "^1.1.2",
     "jade": "~1.11.0",
+    "jquery": "^3.3.1",
     "morgan": "~1.8.1",
     "nodemon": "^1.11.0",
     "pg": "^7.1.2",
@@ -33,7 +37,9 @@
     "sinon": "^4.5.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.1",
+    "jsdom": "^11.11.0",
     "mocha": "^3.5.0",
     "newman": "^3.8.3",
     "node-mocks-http": "^1.6.4",
