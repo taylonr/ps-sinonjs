@@ -8,7 +8,7 @@ const getPrices = (price, currency, callback) => {
   $.ajax(settings).done(function (response) {
     for (var key in response.rates) {
       if(key === currency){
-        callback((response.rates[key] + price).toFixed(2));
+        callback((response.rates[key] * price).toFixed(2));
       }
     }
   });
