@@ -6,7 +6,7 @@ const model = require('../models').user;
 const wishlist = require('../models').wishlist;
 
 describe('When creating a user', () => {
-  it('Should have a customerSince field', () => {
+  it('Should add a customerSince field', () => {
     const req = httpMocks.createRequest({
       body: {
         firstName: 'test',
@@ -18,15 +18,15 @@ describe('When creating a user', () => {
     const res = httpMocks.createResponse();
 
     const newList = sinon.stub(wishlist, 'create');
-
     newList.resolves({dataValues: {id: 1}});
 
     const userCreate = sinon.spy(model, 'create');
 
     return controller.create(req, res).then(() => {
       expect(userCreate.calledWith(sinon.match({
-        customerSince: sinon.match.date
-      }))).to.eql(true);
+        customerSince: sinon.match.date}))).to.eql(true);
     });
+  });
+});
   });
 });
